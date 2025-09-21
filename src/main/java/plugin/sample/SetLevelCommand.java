@@ -8,13 +8,19 @@ import org.jetbrains.annotations.NotNull;
 
 public class SetLevelCommand implements CommandExecutor {
 
+  private Main main;
+
+  public SetLevelCommand(Main main) {
+    this.main = main;
+  }
+
   @Override
   public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
     if (sender instanceof Player player) {
       if (args.length == 1) {
         player.setLevel(Integer.parseInt(args[0]));
       } else {
-        player.sendMessage("Noooooooo!!!!");
+        player.sendMessage(main.getConfig().getString("Message"));
       }
     }
     return false;
